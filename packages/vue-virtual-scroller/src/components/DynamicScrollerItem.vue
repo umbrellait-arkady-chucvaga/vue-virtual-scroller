@@ -74,20 +74,10 @@ export default {
   watch: {
     watchData: 'updateWatchData',
 
-    id (value, oldValue) {
+    id () {
       this.$el.$_vs_id = this.id
       if (!this.size) {
         this.onDataUpdate()
-      }
-
-      if (this.$_sizeObserved) {
-        // In case the old item had the same size, it won't trigger the ResizeObserver
-        // since we are reusing the same DOM node
-        const oldSize = this.vscrollData.sizes[oldValue]
-        const size = this.vscrollData.sizes[value]
-        if (oldSize != null && oldSize !== size) {
-          this.applySize(oldSize)
-        }
       }
     },
 
